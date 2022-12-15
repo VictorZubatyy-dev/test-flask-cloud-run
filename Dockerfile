@@ -1,7 +1,9 @@
-FROM python:3.8-alpine
+FROM ubuntu:latest
 COPY ./requirements.txt /app/requirements.txt
 WORKDIR /app
-RUN pip install -r requirements.txt
+RUN pip3 install -r requirements.txt\
+RUN apt -y install python3-pip
 COPY . /app
-ENTRYPOINT [ "python" ]
+ENTRYPOINT [ "python3" ]
 CMD ["hello.py" ]
+EXPOSE 8080
